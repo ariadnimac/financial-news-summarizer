@@ -44,7 +44,7 @@ def ask_question(company, query, top_k=3):
     )
 
     answer = response.choices[0].message.content
-    print("\n Answer:", answer)
+    return answer
 
 if __name__ == "__main__":
     company = input("Enter company name: ")
