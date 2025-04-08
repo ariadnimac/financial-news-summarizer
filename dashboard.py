@@ -5,18 +5,7 @@ from preprocess import preprocess_news
 from sentiment import analyze_sentiment
 from embed import embed_articles
 from rag_query import ask_question
-from finance import fetch_stock_data
-
-def get_ticker_from_name(company_name):
-    url = f"https://query1.finance.yahoo.com/v1/finance/search?q={company_name}"
-    try:
-        response = requests.get(url)
-        results = response.json()
-        if results.get("quotes"):
-            return results["quotes"][0].get("symbol", "")
-    except Exception as e:
-        print("Error retrieving ticker:", e)
-    return ""
+from finance import fetch_stock_data, get_ticker_from_name
 
 st.set_page_config(page_title="Financial News Assistant", layout="wide")
 st.title("📰 Financial News Assistant")
