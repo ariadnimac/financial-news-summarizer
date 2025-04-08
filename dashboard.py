@@ -12,6 +12,7 @@ st.title("📰 Financial News Assistant")
 
 company = st.text_input("Enter a company name to analyse:", "Tesla")
 auto_ticker = get_ticker_from_name(company)
+ticker = auto_ticker
 
 if st.button("Run Pipeline"):
     with st.spinner("Fetching and analyzing news..."):
