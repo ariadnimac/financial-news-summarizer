@@ -3,16 +3,21 @@ import yfinance as yf
 import pandas as pd
 from datetime import datetime, timedelta
 
+TICKER_MAP = {
+    "tesla": "TSLA",
+    "apple": "AAPL",
+    "microsoft": "MSFT",
+    "amazon": "AMZN",
+    "google": "GOOGL",
+    "meta": "META",
+    "nvidia": "NVDA",
+    "intel": "INTC",
+    "netflix": "NFLX",
+    "facebook": "META"
+}
+
 def get_ticker_from_name(company_name):
-    url = f"https://query1.finance.yahoo.com/v1/finance/search?q={company_name}"
-    try:
-        response = requests.get(url)
-        results = response.json()
-        if results.get("quotes"):
-            return results["quotes"][0].get("symbol", "")
-    except Exception as e:
-        print("Error retrieving ticker:", e)
-    return ""
+    return TICKER_MAP.get(company_name.strip().lower(), "")
 
 def fetch_stock_data(ticker, days_back=7):
     end_date = datetime.today()
