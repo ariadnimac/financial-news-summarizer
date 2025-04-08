@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import plotly.express as px
 
 from fetcher import fetch_news
 from preprocess import preprocess_news
