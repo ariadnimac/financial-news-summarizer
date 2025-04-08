@@ -24,6 +24,8 @@ def fetch_stock_data(ticker, days_back=7):
     start_date = end_date - timedelta(days=days_back)
 
     df = yf.download(ticker, start=start_date.strftime('%Y-%m-%d'), end=end_date.strftime('%Y-%m-%d'))
+    print("🔍 Raw DataFrame columns returned by yfinance:")
+    print(df.columns)
     if df is None or df.empty:
         print(f"No stock data found for ticker: {ticker}")
         return None
