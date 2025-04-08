@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 
 from fetcher import fetch_news
 from preprocess import preprocess_news
@@ -8,6 +9,9 @@ from rag_query import ask_question
 
 st.set_page_config(page_title="Financial News Assistant", layout="wide")
 st.title("📰 Financial News Assistant")
+
+os.makedirs("./data/raw", exist_ok=True)
+os.makedirs("./data/processed", exist_ok=True)
 
 company = st.text_input("Enter a company name to analyze:", "Tesla")
 
