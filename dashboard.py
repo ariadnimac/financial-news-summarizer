@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 
 from fetcher import fetch_news
 from preprocess import preprocess_news
