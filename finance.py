@@ -26,7 +26,7 @@ def fetch_stock_data(ticker, days_back=7):
     df = yf.download(ticker, start=start_date.strftime('%Y-%m-%d'), end=end_date.strftime('%Y-%m-%d'))
     print("🔍 Raw DataFrame columns returned by yfinance:")
     print(df.columns)
-        if isinstance(df.columns, pd.MultiIndex):
+    if isinstance(df.columns, pd.MultiIndex):
         df.columns = [col[0] if isinstance(col, tuple) else col for col in df.columns]
 
     df.reset_index(inplace=True)
