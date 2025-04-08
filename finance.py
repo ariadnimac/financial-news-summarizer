@@ -26,9 +26,8 @@ def fetch_stock_data(ticker, days_back=7):
     df = yf.download(ticker, start=start_date.strftime('%Y-%m-%d'), end=end_date.strftime('%Y-%m-%d'))
     print("🔍 Raw DataFrame columns returned by yfinance:")
     print(df.columns)
-    if df is None or df.empty:
-        print(f"No stock data found for ticker: {ticker}")
-        return None
+        if isinstance(df.columns, pd.MultiIndex):
+        df.columns = [col[0] if isinstance(col, tuple) else col for col in df.columns]
 
     df.reset_index(inplace=True)
     df = df[['Date', 'Open', 'High', 'Low', 'Close', 'Volume']]
@@ -36,7 +35,7 @@ def fetch_stock_data(ticker, days_back=7):
     file_path = f"data/finance/{ticker.lower()}_price.parquet"
     df.to_parquet(file_path, index=False)
 
-    print(f"Fetched and saved stock price data for {ticker}.")
+    print(f"✅ Fetched and saved stock price data for {ticker}.")
     return file_path
 
 if __name__ == "__main__":
