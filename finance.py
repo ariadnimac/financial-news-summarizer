@@ -21,16 +21,16 @@ def fetch_stock_data(ticker, days_back=7):
     df = yf.download(ticker, start=start_date.strftime('%Y-%m-%d'), end=end_date.strftime('%Y-%m-%d'))
     if df.empty:
         print(f"No stock data found for ticker: {ticker}")
-        return
+        return None
 
     df.reset_index(inplace=True)
     df = df[['Date', 'Open', 'High', 'Low', 'Close', 'Volume']]
     os.makedirs("data/finance", exist_ok=True)
-    df.to_parquet(f"data/finance/{ticker.lower()}_price.parquet", index=False)
+    file_path = f"data/finance/{ticker.lower()}_price.parquet"
+    df.to_parquet(file_path, index=False)
 
     print(f"Fetched and saved stock price data for {ticker}.")
     return file_path
-
 
 if __name__ == "__main__":
     ticker = input("Enter stock ticker (e.g. TSLA): ")
