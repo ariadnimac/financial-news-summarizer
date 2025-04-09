@@ -23,23 +23,23 @@ This project is a Streamlit-based application that allows users to query and sum
 The frontend is built using Streamlit, providing a lightweight and interactive interface. Users can input a company name, run the full pipeline, ask questions, and view historical logs of queries directly within the app.
 
 ## Project Structure
-📁 /
-├── fetcher.py           # Fetches news articles using NewsAPI
-├── preprocess.py        # Cleans and filters raw news data
-├── sentiment.py         # Applies sentiment analysis (VADER or OpenAI)
-├── embed.py             # Embeds articles using OpenAI and stores in FAISS
-├── rag_query.py         # Handles question-answering using RAG
-├── finance.py           # Retrieves stock price data and maps company to ticker
-├── dashboard.py         # Streamlit application interface
-├── log.py               # Logs user queries and fetches past entries from RDS
+/
+- fetcher.py           # Fetches news articles using NewsAPI
+- preprocess.py        # Cleans and filters raw news data
+- sentiment.py         # Applies sentiment analysis (VADER or OpenAI)
+- embed.py             # Embeds articles using OpenAI and stores in FAISS
+- rag_query.py         # Handles question-answering using RAG
+- finance.py           # Retrieves stock price data and maps company to ticker
+- dashboard.py         # Streamlit application interface
+- log.py               # Logs user queries and fetches past entries from RDS
 
-📁 data/
-├── raw/                 # Raw news JSON files
-├── processed/           # Cleaned and embedded files (JSON, Parquet, FAISS)
-├── finance/             # Stock price data in Parquet format
-├── logs/                # Optional local query logs (if not using RDS)
+data/
+- raw/                 # Raw news JSON files
+- processed/           # Cleaned and embedded files (JSON, Parquet, FAISS)
+- finance/             # Stock price data in Parquet format
+- logs/                # Optional local query logs (if not using RDS)
 
-📄 requirements.txt       # Python package dependencies
+- requirements.txt       # Python package dependencies
 
 ## Deployment Notes
 - All environment variables are stored using secrets.toml when deployed on Streamlit Cloud.
