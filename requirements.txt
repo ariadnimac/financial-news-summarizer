@@ -9,3 +9,5 @@ python-dotenv
 tqdm
 yfinance
 plotly
+psycopg2-binary
+
