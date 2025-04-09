@@ -40,5 +40,4 @@ if st.button("Get Answer") and query:
         st.markdown(f"**💬 Answer to '{query}':**")
         answer = ask_question(company, query)
         st.write(answer)
-
-log_query(company, query, answer)
+        log_query(company, query, answer)
