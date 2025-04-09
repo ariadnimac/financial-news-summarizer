@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+from log import log_query, fetch_recent_logs
+import streamlit as st
 
 from fetcher import fetch_news
 from preprocess import preprocess_news
@@ -38,3 +40,5 @@ if st.button("Get Answer") and query:
         st.markdown(f"**💬 Answer to '{query}':**")
         answer = ask_question(company, query)
         st.write(answer)
+
+log_query(company, query, answer)
