@@ -15,8 +15,6 @@ def log_query(company, question, answer):
             user=st.secrets["DB_USER"],
             password=st.secrets["DB_PASSWORD"],
             port=st.secrets.get("DB_PORT", 5432)
-            connect_timeout=5
-
         )
         cursor = conn.cursor()
 
